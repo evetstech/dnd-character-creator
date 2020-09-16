@@ -1,9 +1,11 @@
+/*eslint-disable*/
 import React, { useContext } from 'react';
 import Input from '../../common/components/Input';
 import './Display.scss';
 import { CharacterSheetContext } from '../../context/CharacterSheetContext';
 import AbilityScoreDisplay from './AbilityScoreDisplay';
-
+import { observer } from 'mobx-react';
+/*eslint-enable*/
 const LiveDisplay = () => {
   const state = useContext(CharacterSheetContext);
 
@@ -25,19 +27,19 @@ const LiveDisplay = () => {
 };
 
 //use mobx
-// const LiveDisplay = observver(({dex, str, con, int, wis, cha, name, race, _class, alignment}) => {
+// const LiveDisplay = observer(({ store }) => {
 
 //   return (
 //     <div className='leftSplit'>
 //       <h3 className='title'>Live Updated View</h3>
 //       <div className='liveDisplayTopWrap'>
-//         <AbilityScoreDisplay str={str} dex={dex} con={con} int={int} wis={wis} cha={cha} />
+//         <AbilityScoreDisplay str={store.str} dex={store.dex} con={store.con} int={store.int} wis={store.wis} cha={store.cha} />
 //         <div className='fill' />
 //         <div className='otherWrap'>
-//           <Input placeholder='Name' value={name} disabled={true} />
-//           <Input placeholder='Race' value={race} disabled={true} />
-//           <Input placeholder='Class' value={_class} disabled={true} />
-//           <Input placeholder='Alignment' value={alignment} disabled={true} />
+//           <Input placeholder='Name' value={store.name} disabled />
+//           <Input placeholder='Race' value={store.race} disabled />
+//           <Input placeholder='Class' value={store.class} disabled />
+//           <Input placeholder='Alignment' value={store.alignment} disabled />
 //         </div>
 //       </div>
 //     </div>

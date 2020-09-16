@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import './App.scss';
-import Creation  from './features/Create/Create';
+import Creation from './features/Create/Create';
 import DiceRoll from './features/DiceRoll/DiceRoll';
 import Display from './features/Display/Display';
 import { CharacterSheetProvider } from './context/CharacterSheetContext';

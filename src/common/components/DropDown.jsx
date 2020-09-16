@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -25,12 +25,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DropDown = ({ placeholder = '', items = [], value = '', onChange = () => { }, emptyValueMsg=''}) => {
+const DropDown = ({ onChangeId, placeholder = '', items = [], value = '', onChange = () => { }, emptyValueMsg = '' }) => {
   const classes = useStyles();
   const [currentSelect, setCurrentSelect] = useState(value);
   const handleChange = (event) => {
-    onChange(event.target.value, placeholder, currentSelect);
-    setCurrentSelect(event.target.value); 
+    onChange(event.target.value, onChangeId ? onChangeId : placeholder, currentSelect);
+    setCurrentSelect(event.target.value);
   };
   return (
     <>
@@ -43,11 +43,10 @@ const DropDown = ({ placeholder = '', items = [], value = '', onChange = () => {
           label={placeholder}
           className={classes.select}
         >
-          {items && items.length !== 0 ? 
-          items.map((item, index) => <MenuItem disabled={item.selected} key={item + '-' + index} value={item.value ? item.value : item}>{item.value ? item.value : item}</MenuItem>) :
-          <MenuItem disabled>{emptyValueMsg}</MenuItem>
-          
-        }
+          {items && items.length !== 0 ?
+            items.map((item, index) => <MenuItem disabled={item.selected} key={item + '-' + index} value={item.value ? item.value : item}>{item.value ? item.value : item}</MenuItem>) :
+            <MenuItem disabled>{emptyValueMsg}</MenuItem>
+          }
         </Select>
       </FormControl>
     </>

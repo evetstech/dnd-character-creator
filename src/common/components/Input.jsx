@@ -35,10 +35,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Input = ({ placeholder = '', value = '', onChange = () => { }, disabled = false }) => {
+const Input = ({ onChangeId, placeholder = '', value = '', onChange = () => { }, disabled = false }) => {
   const classes = useStyles();
   const handleOnChange = (e) => {
-    onChange(e.target.value, placeholder);
+    onChange(e.target.value, onChangeId ? onChangeId : placeholder);
   };
 
   return (

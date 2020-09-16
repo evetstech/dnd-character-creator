@@ -9,32 +9,30 @@ export const initialState = {
   class: '',
   alignment: '',
   name: '',
-  roll: []
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case 'Strength':
+    case 'str':
       return { ...state, str: action.payload};
-    case 'Dexterity':
+    case 'dex':
       return { ...state, dex: action.payload };
-    case 'Constitution':
+    case 'con':
       return { ...state, con: action.payload };
-    case 'Intellect':
+    case 'int':
       return { ...state, int: action.payload };
-    case 'Wisdom':
+    case 'wis':
       return { ...state, wis: action.payload };
-    case 'Charisma':
+    case 'cha':
       return { ...state, cha: action.payload };
-    case 'Race':
+    case 'race':
       return { ...state, race: action.payload };
-    case 'Class':
+    case 'class':
       return { ...state, class: action.payload };
-    case 'Alignment':
+    case 'alignment':
       return { ...state, alignment: action.payload };
-    case 'Name':
+    case 'name':
       return { ...state, name: action.payload };
-    case 'AddRoll':
     default:
       return state;
   }

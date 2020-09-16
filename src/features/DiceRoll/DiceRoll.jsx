@@ -1,7 +1,12 @@
+/*eslint-disable*/
 import React, { useContext, useCallback, useEffect, useState } from 'react';
 import FourD6 from './FourD6';
 import { CharacterSheetContext } from '../../context/CharacterSheetContext';
 import './DiceRoll.scss';
+import StoreWrapper from '../../hoc/StoreWrapper';
+import { autorun } from 'mobx';
+import { observer } from 'mobx-react';
+/*eslint-enable*/
 
 const DiceRoll = () => {
   const { roll, setCharacterData } = useContext(CharacterSheetContext);
@@ -31,25 +36,26 @@ const DiceRoll = () => {
 };
 
 // use mobx
-// const DiceRoll = observer(({roll, functionToUpdateRoll}) => {
+// const DiceRollMobX = observer(({ store }) => {
 //   const [disableRoll, setDisableRoll] = useState(false);
 
 //   //update to use mobx
-//   const setRoll = (value) => {
-//     functionToUpdateRoll(value)
-//   };
+//   const setRoll = useCallback((value) => {
+//     store.addRoll(value);
+//   }, [store]);
 
-//   useEffect(() => {
-//     if (roll.length === 6) {
+//   // ??????
+//   useEffect(() => autorun(() => {
+//     if (store.roll.length === 6) {
 //       setDisableRoll(true);
 //     }
-//   }, [roll]);
+//   }), [store]);
 
 //   return (
 //     <>
 //       <div className={'infoDice'}>
-//         <span>Number of rolls left: {6 - roll.length}</span>
-//         <span>Current rolls: [ {roll.map(value => value + ' ')}]</span>
+//         <span>Number of rolls left: {6 - store.roll.length}</span>
+//         <span>Current rolls: [ {store.roll.map(value => value + ' ')}]</span>
 //       </div>
 //       <div className='DiceRollWrap'>
 //         <FourD6 setRoll={setRoll} disableRoll={disableRoll} />
@@ -57,4 +63,6 @@ const DiceRoll = () => {
 //     </>
 //   );
 // });
+// const DiceRoll = StoreWrapper(DiceRollMobX);
+
 export default DiceRoll;

@@ -8,12 +8,12 @@ import React, { createContext, useReducer, useCallback } from 'react';
  *   setCharacterData (type, value) => type = type of data updating (capitalize first letter of type)
  */
 export const CharacterSheetContext = createContext({
-  str: 0,
-  dex: 0,
-  con: 0,
-  int: 0,
-  wis: 0,
-  cha: 0,
+  str: '',
+  dex: '',
+  con: '',
+  int: '',
+  wis: '',
+  cha: '',
   race: '',
   class: '',
   alignment: '',
@@ -36,44 +36,41 @@ export const CharacterSheetProvider = (props) => {
 };
 
 export const initialState = {
-  str: 0,
-  dex: 0,
-  con: 0,
-  int: 0,
-  wis: 0,
-  cha: 0,
+  str: '',
+  dex: '',
+  con: '',
+  int: '',
+  wis: '',
+  cha: '',
   race: '',
   class: '',
   alignment: '',
   name: '',
-  playerName: '',
   roll: []
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case 'Strength':
+    case 'str':
       return { ...state, str: action.payload };
-    case 'Dexterity':
+    case 'dex':
       return { ...state, dex: action.payload };
-    case 'Constitution':
+    case 'con':
       return { ...state, con: action.payload };
-    case 'Intellect':
+    case 'int':
       return { ...state, int: action.payload };
-    case 'Wisdom':
+    case 'wis':
       return { ...state, wis: action.payload };
-    case 'Charisma':
+    case 'cha':
       return { ...state, cha: action.payload };
-    case 'Race':
+    case 'race':
       return { ...state, race: action.payload };
-    case 'Class':
+    case 'class':
       return { ...state, class: action.payload };
-    case 'Alignment':
+    case 'alignment':
       return { ...state, alignment: action.payload };
-    case 'Name':
+    case 'name':
       return { ...state, name: action.payload };
-    case 'Player Name':
-      return { ...state, playerName: action.payload };
     case 'AddRoll':
       const roll = [...state.roll];
       roll.push(action.payload);
