@@ -24,7 +24,7 @@ const DiceRoll = () => {
 
   return (
     <>
-      <div className={'infoDice'}>
+      <div className='infoDice'>
         <span>Number of rolls left: {6 - roll.length}</span>
         <span>Current rolls: [ {roll.map(value => value + ' ')}]</span>
       </div>
